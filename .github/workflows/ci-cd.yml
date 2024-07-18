@@ -30,7 +30,7 @@ jobs:
         kubectl apply -f wisecow-deployment.yaml
         kubectl apply -f wisecow-service.yaml
         kubectl apply -f wisecow-ingress.yaml
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+     # env:
+       #KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
 
