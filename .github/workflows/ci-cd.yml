@@ -20,14 +20,15 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t <your-docker-registry>/wisecow:latest .
+      run: docker build -t your-docker-username/wisecow:latest .
 
     - name: Push Docker image
-      run: docker push <your-docker-registry>/wisecow:latest
+      run: docker push your-docker-username/wisecow:latest
 
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f wisecow-deployment.yaml
         kubectl apply -f wisecow-service.yaml
+        kubectl apply -f wisecow-ingress.yaml
       env:
         KUBECONFIG: ${{ secrets.KUBECONFIG }}
