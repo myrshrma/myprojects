@@ -32,3 +32,4 @@ jobs:
         kubectl apply -f wisecow-ingress.yaml
       env:
         KUBECONFIG: ${{ secrets.KUBECONFIG }}
+
