@@ -28,6 +28,11 @@ jobs:
     - name: Save kubeconfig to file
       run: echo "${{ secrets.KUBECONFIG }}" > /tmp/kubeconfig
 
+    - name: Debug DNS resolution
+      run: |
+        nslookup kubernetes.docker.internal || echo "DNS lookup failed"
+        cat /etc/resolv.conf
+
     - name: Debug kubeconfig and network
       run: |
         export KUBECONFIG=/tmp/kubeconfig
