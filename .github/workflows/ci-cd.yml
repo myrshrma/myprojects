@@ -25,6 +25,9 @@ jobs:
     - name: Push Docker image
       run: docker push myrshrma1/wisecow:latest
 
+    - name: Create .kube directory
+      run: mkdir -p $HOME/.kube
+
     - name: Set up KUBECONFIG
       run: echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
