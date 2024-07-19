@@ -31,10 +31,20 @@ jobs:
     - name: Set up KUBECONFIG
       run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
+    - name: Print KUBECONFIG content
+      run: cat $HOME/.kube/config
+
     - name: Validate KUBECONFIG
       run: |
         kubectl config view
         kubectl cluster-info
+      env:
+        KUBECONFIG: $HOME/.kube/config
+
+    - name: Debug Kubernetes Connectivity
+      run: |
+        kubectl version
+        kubectl get nodes
       env:
         KUBECONFIG: $HOME/.kube/config
 
