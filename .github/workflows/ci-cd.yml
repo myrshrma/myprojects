@@ -48,3 +48,4 @@ jobs:
         kubectl apply --validate=false -f wisecow-ingress.yaml
       env:
         KUBECONFIG: /tmp/kubeconfig
+        
