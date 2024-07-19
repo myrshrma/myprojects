@@ -25,27 +25,12 @@ jobs:
     - name: Push Docker image
       run: docker push myrshrma1/wisecow:latest
 
-    - name: Save kubeconfig to file
-      run: echo "${{ secrets.KUBECONFIG }}" > /tmp/kubeconfig
-
-    - name: Debug DNS resolution
-      run: |
-        nslookup kubernetes.docker.internal || echo "DNS lookup failed"
-        cat /etc/resolv.conf
-
-    - name: Debug kubeconfig and network
-      run: |
-        export KUBECONFIG=/tmp/kubeconfig
-        kubectl config view
-        kubectl cluster-info
-        kubectl get nodes
+    - name: Save KUBECONFIG to file
+      run: echo "${{ secrets.KUBECONFIG }}" > kubeconfig.yaml
 
     - name: Deploy to Kubernetes
       run: |
-        export KUBECONFIG=/tmp/kubeconfig
-        kubectl apply --validate=false -f wisecow-deployment.yaml
-        kubectl apply --validate=false -f wisecow-service.yaml
-        kubectl apply --validate=false -f wisecow-ingress.yaml
-      env:
-        KUBECONFIG: /tmp/kubeconfig
-        
+        export KUBECONFIG=kubeconfig.yaml
+        kubectl apply -f wisecow-deployment.yaml
+        kubectl apply -f wisecow-service.yaml
+        kubectl apply -f wisecow-ingress.yaml
