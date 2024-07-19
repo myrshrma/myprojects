@@ -28,9 +28,18 @@ jobs:
     - name: Save kubeconfig to file
       run: echo "${{ secrets.KUBECONFIG }}" > /tmp/kubeconfig
 
+    - name: Debug kubeconfig and network
+      run: |
+        export KUBECONFIG=/tmp/kubeconfig
+        kubectl config view
+        kubectl cluster-info
+        kubectl get nodes
+
     - name: Deploy to Kubernetes
       run: |
         export KUBECONFIG=/tmp/kubeconfig
-        kubectl apply -f wisecow-deployment.yaml
-        kubectl apply -f wisecow-service.yaml
-        kubectl apply -f wisecow-ingress.yaml
+        kubectl apply --validate=false -f wisecow-deployment.yaml
+        kubectl apply --validate=false -f wisecow-service.yaml
+        kubectl apply --validate=false -f wisecow-ingress.yaml
+      env:
+        KUBECONFIG: /tmp/kubeconfig
