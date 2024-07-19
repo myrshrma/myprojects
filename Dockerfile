@@ -19,3 +19,4 @@ EXPOSE 4499
 CMD ["./wisecow.sh"]
 
 
+
