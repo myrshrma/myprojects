@@ -25,12 +25,12 @@ jobs:
     - name: Push Docker image
       run: docker push myrshrma1/wisecow:latest
 
+    - name: Save kubeconfig to file
+      run: echo "${{ secrets.KUBECONFIG }}" > /tmp/kubeconfig
+
     - name: Deploy to Kubernetes
       run: |
+        export KUBECONFIG=/tmp/kubeconfig
         kubectl apply -f wisecow-deployment.yaml
         kubectl apply -f wisecow-service.yaml
         kubectl apply -f wisecow-ingress.yaml
-      env:
-       KUBECONFIG: ${{ secrets.KUBECONFIG }}
-
-
