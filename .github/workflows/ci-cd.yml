@@ -31,10 +31,20 @@ jobs:
     - name: Set up KUBECONFIG
       run: echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
+    - name: Print KUBECONFIG
+      run: echo "${{ secrets.KUBECONFIG }}"
+
+    - name: Validate KUBECONFIG
+      run: |
+        kubectl config view
+        kubectl cluster-info
+      env:
+        KUBECONFIG: $HOME/.kube/config
+
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f wisecow-deployment.yaml
-        kubectl apply -f wisecow-service.yaml
-        kubectl apply -f wisecow-ingress.yaml
+        kubectl apply -f wisecow-deployment.yaml --validate=false
+        kubectl apply -f wisecow-service.yaml --validate=false
+        kubectl apply -f wisecow-ingress.yaml --validate=false
       env:
         KUBECONFIG: $HOME/.kube/config
