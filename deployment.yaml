@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: static-web-container
-        image: gcr.io/trans-filament-450510-v8/static-web-app:latest  # Replace with your image
+        image: we have to add the latest image here
         ports:
         - containerPort: 80
