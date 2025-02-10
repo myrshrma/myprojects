@@ -22,7 +22,6 @@ Step to cofigure the GKE- cluster:
    5)terraform apply.
 
 Create a Web_page:
-
    1)touch index.html
    2)add the code as in repo
    3)touch Dockerfile
@@ -31,7 +30,6 @@ Create a Web_page:
    6)upload to GCP resitory : gcloud builds submit --tag gcr.io/project id/static-web-app --verbosity=debug
 
 create a deployment files:
-
    1)touch deployment.yaml:
    2)add the content as repo
    3)kubectl apply -f deployment.yaml
@@ -40,15 +38,14 @@ create a deployment files:
                  kubectl get svc
 
 Prometheous:
-
    1) touch prometheous-deployment.yaml prometheous-configmap.yaml prometheous-service.yaml
    2) add the content as per repo
    3) kubectl create namespace monitoring
    5) kubectl apply -f prometheus-config.yaml 
    6) kubectl apply -f prometheus-deployment.yaml 
    7) kubectl apply -f prometheus-service.yaml 
-8) kubectl get pods -n monitoring
-9) kubectl get svc -n monitoring
+   8) kubectl get pods -n monitoring
+   9) kubectl get svc -n monitoring
 
 
 
