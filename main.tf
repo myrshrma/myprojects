@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "${file("trans-filament-450510-v8-8216ae2dd2ac.json")}"  
+  credentials = "${file("name of the credential file stored repo")}"  
   project     = "trans-filament-450510-v8"                       
   region      = "us-central1"
 }
