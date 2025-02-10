@@ -1,8 +1,6 @@
-GKE using terraform:
-
- -prerequisite: 
+prerequisite: 
   
-   1)GCP account
+    1)GCP account
       -configure project
       -note down project id
       -enable kubernetes engine api and compute engine api
@@ -16,6 +14,7 @@ GKE using terraform:
        -check installation : terraform -v
 
 Step to cofigure the GKE- cluster:
+
 1)mkdir project
 2)cd project
 3)touch main.tf (Add the content as per the repo file above)
@@ -23,6 +22,7 @@ Step to cofigure the GKE- cluster:
 5)terraform apply.
 
 Create a Web_page:
+
 1)touch index.html
 2)add the code as in repo
 3)touch Dockerfile
@@ -31,6 +31,7 @@ Create a Web_page:
 6)upload to GCP resitory : gcloud builds submit --tag gcr.io/project id/static-web-app --verbosity=debug
 
 create a deployment files:
+
 1)touch deployment.yaml:
 2)add the content as repo
 3)kubectl apply -f deployment.yaml
@@ -39,6 +40,7 @@ create a deployment files:
                  kubectl get svc
 
 Prometheous:
+
 1) touch prometheous-deployment.yaml prometheous-configmap.yaml prometheous-service.yaml
 2) add the content as per repo
 3) kubectl create namespace monitoring
