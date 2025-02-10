@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: static-web-app
+  template:
+    metadata:
+      labels:
+        app: static-web-app
+    spec:
+      containers:
+      - name: static-web-container
+        image: gcr.io/trans-filament-450510-v8/static-web-app:latest  # Replace with your image
+        ports:
+        - containerPort: 80
