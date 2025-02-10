@@ -14,7 +14,6 @@ prerequisite:
        -check installation : terraform -v
 
 Step to cofigure the GKE- cluster:
-
    1)mkdir project
    2)cd project
    3)touch main.tf (Add the content as per the repo file above)
@@ -35,7 +34,7 @@ create a deployment files:
    3)kubectl apply -f deployment.yaml
    4)Load balancer service: kubectl expose deployment static-web-app --type=LoadBalancer --port=80 --target-port=80
    5)check service: kubectl get pods
-                 kubectl get svc
+                    kubectl get svc
 
 Prometheous:
    1) touch prometheous-deployment.yaml prometheous-configmap.yaml prometheous-service.yaml
