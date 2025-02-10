@@ -38,9 +38,9 @@ Prometheous:
 1) touch prometheous-deployment.yaml prometheous-configmap.yaml prometheous-service.yaml
 2) add the content as per repo
 3) kubectl create namespace monitoring
-5) kubectl apply -f prometheus-config.yaml -n monitoring
-6) kubectl apply -f prometheus-deployment.yaml n monitoring
-7) kubectl apply -f prometheus-service.yaml n monitoring
+5) kubectl apply -f prometheus-config.yaml 
+6) kubectl apply -f prometheus-deployment.yaml 
+7) kubectl apply -f prometheus-service.yaml 
 8) kubectl get pods -n monitoring
 9) kubectl get svc -n monitoring
 
