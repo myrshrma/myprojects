@@ -1,12 +1,15 @@
 GKE using terraform:
 
  -prerequisite: 
+  
    1)GCP account
       -configure project
       -note down project id
       -enable kubernetes engine api and compute engine api
       -create the service account (GCP console ->IAM & Admin-> Service account->Create key and download in local floder.
+  
     2)VS code
+   
     3)Terraform
       -form the official document download the binary
        -set path in enviroment variable
